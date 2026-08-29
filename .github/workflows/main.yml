@@ -1,8 +1,7 @@
 name: PHP Deploy Pipeline
-
 on:
 push:
-branches: [ "main" ]
+branches: [ &quot;main&quot; ]
 
 1
 
@@ -12,7 +11,7 @@ jobs:
 deploy:
 runs-on: ubuntu-latest
 steps:
-- name: Remote SSH to Execution Commands
+- name: �� Remote SSH to Execution Commands
 uses: appleboy/ssh-action@v1.2.0
 with:
 host: ${{ secrets.SERVER_HOST }}
