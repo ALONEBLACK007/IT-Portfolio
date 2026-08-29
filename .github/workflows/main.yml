@@ -2,21 +2,16 @@ name: PHP Deploy Pipeline
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
-      - name: Remote SSH to Execution Commands
-        uses: appleboy/ssh-action@v1.2.0
-        with:
-          host: ${{ secrets.SERVER_HOST }}
-          port: ${{ secrets.SERVER_PORT }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SERVER_SSH_KEY }}
-          script: |
-            cd /var/www/IT-Portfolio
-            git fetch origin
-            git reset --hard origin/main
+      - name: Deploy IT-Portfolio
+        run: |
+          cd /var/www/IT-Portfolio
+          git fetch origin
+          git reset --hard origin/main
